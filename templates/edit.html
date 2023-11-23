@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form class="ui form" action="/edit/{{todo.id}}" method="post">
+        <div class="field">
+            <label>Todo Title</label>
+            <textarea name="task" rows="1" >{{todo.task}}</textarea>
+            <br>
+        </div>
+        <div>
+            <span>Done</span>
+            <input class="ui checkbox" type="checkbox" name="completed" {% if todo.completed %}checked{% endif %}>
+        </div>
+        <button class="ui blue button" type="submit">Save</button>
+    </form>
+
+    <hr>
+
+{% endblock content %}

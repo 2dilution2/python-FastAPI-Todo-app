@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form class="ui form" action="/add" method="post">
+        <div class="field">
+            <label>Todo Title</label>
+            <input type="text" name="task" placeholder="Enter ToDo task...">
+            <br>
+        </div>
+        <button class="ui blue button" type="submit">Add</button>
+    </form>
+
+    <hr>
+    <div>
+        {% for todo in todos %}
+            <div class="ui segment">
+                <p class="ui big header">{{ todo.task }}</p>
+
+                <!-- <p class="ui big header">{{ todo.completed }}</p> -->
+                {% if todo.completed %}
+                <span class="ui green label">Complete</span>
+                {% else %}
+                <span class="ui gray label">Not Complete</span>
+                {% endif %}
+
+                <a class="ui blue button" href="edit/{{ todo.id }}">Edit</a>
+                <a class="ui red button" href="delete/{{ todo.id }}">Delete</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
